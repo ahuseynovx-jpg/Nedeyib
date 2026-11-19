@@ -50,15 +50,24 @@
   </div>
 
   <div class="ask-block">
-    <form class="ask" role="search">
+    <form class="ask" data-search role="search" action="/ferhad-pervizi/" method="get">
       <label class="sr-only" for="sual">Sualını yaz</label>
       <div class="ask-bar">
         <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.25" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.2 15.2 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <input id="sual" type="text" inputmode="search" placeholder="Sualını yaz" readonly aria-disabled="true" autocomplete="off" aria-describedby="soon">
-        <span class="chip">Tezliklə</span>
+        <input id="sual" name="q" type="text" inputmode="search" placeholder="Sualını yaz" autocomplete="off" aria-describedby="sual-note" enterkeyhint="search">
+        <button class="chip" type="submit">Axtar</button>
       </div>
     </form>
-    <p class="soonbox" id="soon">Sual-cavab bölməsi hazırlanır. Tezliklə burada sualını yazıb cavabı mənbəsi ilə ala biləcəksən.</p>
+    <p class="note" id="sual-note">Axıtarış rejimi (pilot): cavablar əldə olan mətnlərdən tapılır, süni intellekt istifadə olunmur. Avtomatik yazılmış videolarda hərf səhvləri ola bilər.</p>
+    <div class="examples">
+      <button type="button" data-q="Kreditdən necə qurtulum?">Kreditdən necə qurtulum?</button>
+      <button type="button" data-q="Ailə büdcəsi">Ailə büdcəsi</button>
+      <button type="button" data-q="10 000 manatla nə edim?">10 000 manatla nə edim?</button>
+      <button type="button" data-q="Devalvasiya">Devalvasiya</button>
+      <button type="button" data-q="Biznes qurmaq">Biznes qurmaq</button>
+      <button type="button" data-q="İpoteka">İpoteka</button>
+    </div>
+    <div data-search-results aria-live="polite"></div>
   </div>
 
   <section>
@@ -78,12 +87,6 @@
     </div>
   </section>
 
-  <section>
-    <h2>Mənbələr</h2>
-    <div data-source-list data-person="ferhad-pervizi">
-      <p class="empty">Kitabxanaya hələ mənbə əlavə olunmayıb.</p>
-    </div>
-  </section>
 </main>
 <footer class="site-footer">
   <div class="wrap">
@@ -94,5 +97,6 @@
 </footer>
 <script src="/site.config.js"></script>
 <script src="/assets/site.js"></script>
+<script src="/assets/search.js"></script>
 </body>
 </html>
