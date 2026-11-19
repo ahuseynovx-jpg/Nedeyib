@@ -14,7 +14,9 @@
   }
 
   function showLeft(remaining) {
-    if (typeof remaining === "number" && left) left.textContent = "Bu gün qalan sual: " + remaining;
+    if (typeof remaining !== "number" || !left) return;
+    left.hidden = false;
+    left.textContent = "Bu gün qalan sual: " + remaining;
   }
 
   function render(data) {
@@ -33,6 +35,62 @@
     }).join("");
     out.innerHTML = '<div class="ask-answer"><p>' + answer + "</p>" + (list ? '<ol class="ask-sources">' + list + "</ol>" : "") + "</div>";
     showLeft(data.remaining);
+  }
+
+  var ideas = [
+    "10 000 manatla nə edim?",
+    "Ailə büdcəsini necə qurum?",
+    "Kreditdən necə qurtulum?",
+    "Pulumu necə qoruyum?",
+    "Əmanət qoymağa dəyərmi?",
+    "Dollara keçim, yoxsa manatda qalım?",
+    "Devalvasiya olanda nə etməli?",
+    "İnflyasiya qənaəti yeyir?",
+    "İpoteka götürməyə dəyərmi?",
+    "Siyasi dəstək olmadan biznes qurmaq olar?",
+    "Vergi sahibkara necə təsir edir?",
+    "Qızıl yığmaq düzgündürmü?",
+    "Pensiya üçün necə yığmalı?",
+    "Daşınmaz əmlak bahalaşacaq?",
+    "İnvestisiyaya haradan başlayım?"
+  ];
+  var suggest = document.querySelector("[data-suggest]");
+  var suggestBtn = document.querySelector("[data-suggest-q]");
+  var ideaIndex = 0;
+  var timer = 0;
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function showIdea(next) {
+    if (!suggestBtn) return;
+    ideaIndex = (next + ideas.length) % ideas.length;
+    suggestBtn.textContent = ideas[ideaIndex];
+  }
+
+  function arm() {
+    if (reduceMotion || !suggest) return;
+    clearInterval(timer);
+    timer = setInterval(function () {
+      suggestBtn.classList.add("out");
+      setTimeout(function () {
+        showIdea(ideaIndex + 1);
+        suggestBtn.classList.remove("out");
+      }, 350);
+    }, 4000);
+  }
+
+  showIdea(0);
+  arm();
+  if (suggest) {
+    suggest.addEventListener("mouseenter", function () { clearInterval(timer); });
+    suggest.addEventListener("mouseleave", arm);
+    suggest.addEventListener("focusin", function () { clearInterval(timer); });
+    suggest.addEventListener("focusout", arm);
+  }
+  if (suggestBtn) {
+    suggestBtn.addEventListener("click", function () {
+      input.value = suggestBtn.textContent;
+      input.focus();
+    });
   }
 
   form.addEventListener("submit", function (event) {
