@@ -49,6 +49,20 @@
     </div>
   </div>
 
+  <section id="sual">
+    <h2>Sualını yaz</h2>
+    <form class="ask" data-ask>
+      <label class="sr-only" for="sual-input">Sualını yaz</label>
+      <textarea id="sual-input" name="question" maxlength="500" rows="3" placeholder="Sualını yaz" required></textarea>
+      <div class="ask-row">
+        <button type="submit" class="vote-btn">Soruş</button>
+        <p class="pp" data-ask-left></p>
+      </div>
+    </form>
+    <p class="note">Cavablar yalnız Fərhad Pərvizinin öz sözlərinə əsaslanır; hər cavabda mənbə göstərilir.</p>
+    <div data-ask-out aria-live="polite"></div>
+  </section>
+
   <section>
     <h2>Qısaca</h2>
     <div class="facts">
@@ -76,5 +90,6 @@
 </footer>
 <script src="/site.config.js"></script>
 <script src="/assets/site.js"></script>
+<script src="/assets/ask.js"></script>
 </body>
 </html>
