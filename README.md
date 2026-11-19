@@ -2,7 +2,7 @@
 
 Azərbaycanın tanınmış simalarının açıq mənbələrdə dediklərini toplayan sabit sayt. Quruluş addımı yoxdur: fayllar GitHub Pages-də (`main` budağı) birbaşa açılır. Domen `nedeyib.com` (`CNAME`). `.nojekyll` Jekyll-in faylları dəyişdirməməsi üçündür. Ünvanlar domenin kökünə görə yazılıb (`/assets/...`).
 
-Sual-cavab hələ qurulmayıb. Sual xanası qəsdən bağlıdır.
+Sual-cavab səhifədə yoxdur. `data/index/` faylı saxlanılır, sonrakı sual-cavab üçün.
 
 ## Quruluş
 
@@ -12,14 +12,14 @@ Sual-cavab hələ qurulmayıb. Sual xanası qəsdən bağlıdır.
 - `404.html` — tapılmayan ünvan
 - `assets/site.css`, `assets/site.js` — ortaq görünüş və skript
 - `site.config.js` — əlaqə ünvanı
-- `data/sources.json` — mənbə siyahısı. Səhifədə ayrıca siyahı kimi göstərilmir; axtarış nəticəsinin altındakı keçid mənbədir
-- `data/index/ferhad-pervizi.json` — sual axtarışının mətni. Yalnız sual yazılanda yüklənir
+- `data/sources.json` — mənbə siyahısı. Səhifədə göstərilmir
+- `data/index/ferhad-pervizi.json` — saxlanılan mətn indeksi. Səhifədə istifadə olunmur
 - `data/stats/<sima>.json` — kitabxananın irəliləyişi. Faiz və platforma sayları buradan gəlir
 - `sitemap.xml`, `robots.txt`, `favicon.svg`
 
 ## Mənbə əlavə etmək
 
-`data/sources.json` mənbənin adını və ünvanını saxlayır. Şəxs səhifəsində bu siyahı açıq göstərilmir. Oxucu mənbəni axtarış nəticəsinin altındakı «Videoda bax» və ya «Oxu» keçidindən açır.
+`data/sources.json` mənbənin adını və ünvanını saxlayır. Şəxs səhifəsində bu siyahı göstərilmir.
 
 ```json
 {
