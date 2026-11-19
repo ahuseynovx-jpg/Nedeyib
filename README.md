@@ -1,0 +1,58 @@
+# Nə deyib?
+
+Azərbaycanın tanınmış simalarının açıq mənbələrdə dediklərini toplayan sabit sayt. Quruluş addımı yoxdur: fayllar GitHub Pages-də (`main` budağı) birbaşa açılır. Domen `nedeyib.com` (`CNAME`). `.nojekyll` Jekyll-in faylları dəyişdirməməsi üçündür. Ünvanlar domenin kökünə görə yazılıb (`/assets/...`).
+
+Sual-cavab hələ qurulmayıb. Sual xanası qəsdən bağlıdır.
+
+## Quruluş
+
+- `index.html` — ana səhifə. `#ferhad-pervizi` köhnə ünvanı `/ferhad-pervizi/` səhifəsinə yönləndirir.
+- `ferhad-pervizi/index.html` — sima səhifəsi
+- `mexfilik/index.html` — məxfilik
+- `404.html` — tapılmayan ünvan
+- `assets/site.css`, `assets/site.js` — ortaq görünüş və skript
+- `site.config.js` — əlaqə ünvanı
+- `data/sources.json` — səhifədə göstərilən mənbə keçidləri. Say onların sayıdır
+- `data/stats/<sima>.json` — kitabxananın irəliləyişi. Faiz və platforma sayları buradan gəlir
+- `sitemap.xml`, `robots.txt`, `favicon.svg`
+
+## Mənbə əlavə etmək
+
+`data/sources.json` içində simanın `sources` massivinə obyekt artır. Rəqəmi əllə yazma: səhifə massivin uzunluğunu göstərir. Yalnız real, açıq ünvan yaz. Siyahı boşdursa sayt 0 mənbə göstərir.
+
+```json
+{
+  "title": "Mənbənin adı",
+  "url": "https://real-unvan.example/sehife",
+  "note": "İstəyə bağlı qısa qeyd"
+}
+```
+
+`title` və `http` və ya `https` olan `url` mütləqdir. İstəyə bağlı `photo` sahəsi (`/assets/...` və ya `https://...`) simanın şəklini göstərir.
+
+## İrəliləyiş
+
+Rəqəmlər HTML-də yazılmır. Səhifə `data/stats/<sima>.json` faylını oxuyur. `processed` transkripsiya edilərək indekslənmiş saydır. Platformada `total_known` false-dursa faiz əvəzinə «hesablanır» görünür.
+
+Ümumi faiz platformaların cəmi deyil. Eyni çıxış YouTube-da, podkastda və qısa videoda təkrarlana bilər, ona görə səhifə faizi yalnız `unique_works` sahəsindən götürür.
+
+`unique_works.total` hazırda **1105**-dir və bu, müvəqqəti yer tutandır: məlum platforma saylarının cəmidir (985 + 69 + 38 + 3 + 10). Pipeline eyni çıxışı bir dəfə saymaq üçün `unique_works.total` və `duplicates_merged` dəyərlərini yenidən hesablayıb bu fayla yazmalıdır. Səhifə onu özü cəmləməz.
+
+Transkripsiya irəlilədikcə platformanın `processed` sahəsini və `unique_works.processed` sahəsini artır, `updated` tarixini `YYYY-MM-DD` kimi yenilə. Ümumi sayı bilinəndə `total_known` true olsun və `total` yazılsın.
+
+## Sima əlavə etmək
+
+1. `data/sources.json`-a yeni açar və boş `sources` massivi əlavə et.
+2. `data/stats/sima-adı.json` yarat. `unique_works` və `platforms` sahələri olsun.
+3. `sima-adı/index.html` yarat. `data-person`, `data-source-list` və `data-stats` həmin açar olsun. Mətn HTML-də qalsın ki, səhifə indekslənsin. Faizi HTML-ə yazma.
+4. Ana səhifədəki siyahıya kart əlavə et. Keçid yeni yola getsin, kartda `data-stats` eyni açar olsun.
+5. `sitemap.xml`-ə `https://nedeyib.com/sima-adı/` ünvanını yaz.
+6. Köhnə heş lazımdırsa, `index.html` başındakı yönləndirməyə həmin açarı əlavə et.
+
+## Əlaqə
+
+`site.config.js` içində `CONTACT_EMAIL`. Dəyər `CONTACT_EMAIL_TODO` olduqca əlaqə bloku səhifədə görünmür və bu yazı heç yerdə göstərilmir. Real ünvan (məsələn `ad@domain.az`) yazılanda blok özü açılır. Eyni sabit ana səhifədə, sima səhifəsində və məxfilik səhifəsində istifadə olunur.
+
+## Mövzu
+
+İşıqlı və qaranlıq mövzu əvvəlcə sistem ayarına (`prefers-color-scheme`) baxır. Düymə seçimi yalnız brauzerin yerli yaddaşında saxlanır.

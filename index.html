@@ -5,296 +5,125 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nə deyib?</title>
 <meta name="description" content="Azərbaycanın tanınmış və faydalı simalarının dedikləri bir kitabxanada.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Noto+Serif:wght@500;700&display=swap" rel="stylesheet">
-<style>
-/* Layout idea: one narrow reading column, like a library enquiry desk: the question on top, the answer under it, the numbered catalogue of sources below. */
-:root{
-  --bg:#f3f5f7;
-  --surface:#ffffff;
-  --ink:#0f1c2e;
-  --muted:#586575;
-  --line:#d7dee6;
-  --accent:#0b6e5f;
-  --accent-ink:#ffffff;
-  --mark:#ffe08a;
-  --warn-bg:#fff4d6;
-  --warn-ink:#6b4a00;
-  --display:"Noto Serif",Georgia,"Times New Roman",serif;
-  --body:"Noto Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    color-scheme:dark;
-    --bg:#0d141b;--surface:#151f29;--ink:#e7edf3;--muted:#96a4b3;--line:#273543;
-    --accent:#4fc3ae;--accent-ink:#06211c;--mark:#5c4b12;--warn-bg:#3a2e0c;--warn-ink:#f3d88a;
+<link rel="canonical" href="https://nedeyib.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f3efe4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12110e" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="az_AZ">
+<meta property="og:site_name" content="Nə deyib?">
+<meta property="og:title" content="Nə deyib?">
+<meta property="og:description" content="Azərbaycanın tanınmış və faydalı simalarının dedikləri bir kitabxanada.">
+<meta property="og:url" content="https://nedeyib.com/">
+<meta property="og:image" content="https://nedeyib.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Nə deyib? — tanınmış simaların dedikləri bir kitabxanada">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nə deyib?">
+<meta name="twitter:description" content="Azərbaycanın tanınmış və faydalı simalarının dedikləri bir kitabxanada.">
+<meta name="twitter:image" content="https://nedeyib.com/assets/og.png">
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+(function () {
+  function redirectLegacyHash() {
+    var id = location.hash.replace(/^#\/?/, "").replace(/\/$/, "");
+    if (id === "ferhad-pervizi") location.replace("/ferhad-pervizi/");
   }
-}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --bg:#0d141b;--surface:#151f29;--ink:#e7edf3;--muted:#96a4b3;--line:#273543;
-  --accent:#4fc3ae;--accent-ink:#06211c;--mark:#5c4b12;--warn-bg:#3a2e0c;--warn-ink:#f3d88a;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
-.wrap{max-width:680px;margin:0 auto;padding:24px 16px 56px;display:flex;flex-direction:column;gap:24px}
-header{display:flex;flex-direction:column;gap:10px}
-.brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.brand h1{font-family:var(--display);font-weight:700;font-size:30px;line-height:1.1;margin:0;letter-spacing:-0.01em}
-.pill{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--warn-bg);color:var(--warn-ink)}
-.who{margin:0;color:var(--muted);font-size:15px}
-.who strong{color:var(--ink);font-weight:600}
-form{display:flex;flex-direction:column;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
-label{font-size:13px;font-weight:600;color:var(--muted)}
-textarea{width:100%;min-height:64px;resize:vertical;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;color:var(--ink);background:var(--bg)}
-textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-button.primary{font:inherit;font-weight:600;border:0;border-radius:8px;padding:10px 18px;background:var(--accent);color:var(--accent-ink);cursor:pointer}
-button.primary:disabled{opacity:.55;cursor:default}
-.hint{font-size:13px;color:var(--muted)}
-.examples{display:flex;flex-wrap:wrap;gap:8px}
-.examples button{font:inherit;font-size:14px;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
-.examples button:hover{border-color:var(--accent)}
-section h2{font-family:var(--display);font-weight:500;font-size:19px;margin:0 0 10px;text-wrap:balance}
-#answer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px}
-#answer .q{font-size:13px;color:var(--muted);margin:0}
-#answer .a{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
-#answer.none{border-left-color:var(--line)}
-.cite{font:inherit;font-size:12px;font-weight:600;border:0;border-radius:4px;padding:0 5px;margin:0 1px;background:var(--mark);color:var(--ink);cursor:pointer;font-variant-numeric:tabular-nums}
-.used{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:10px;font-size:14px}
-.used span{font-size:12px;font-weight:600;color:var(--muted)}
-a{color:var(--accent)}
-ol.sources{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-ol.sources li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;transition:background-color .6s}
-.used div{border-radius:4px;transition:background-color .6s}
-.used div.flash{background:var(--mark)}
-.num{grid-row:span 3;font-size:12px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
-.st{font-weight:600;margin:0}
-.sx{margin:0;font-size:14px;color:var(--muted)}
-.sl{font-size:13px;overflow-wrap:anywhere}
-.note{font-size:13px;color:var(--muted);margin:0}
-.unavailable{background:var(--warn-bg);color:var(--warn-ink);border-radius:10px;padding:12px 14px;font-size:14px;margin:0}
-.brand a{color:inherit;text-decoration:none}
-.back{font-size:14px;align-self:flex-start}
-.hero{display:flex;flex-direction:column;gap:10px}
-.hero h2{font-family:var(--display);font-weight:700;font-size:38px;line-height:1.08;margin:0;letter-spacing:-0.015em;text-wrap:balance}
-.hero p{margin:0;color:var(--muted);font-size:17px;max-width:34em}
-.people{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.person{display:flex;flex-direction:column;gap:8px;height:100%;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;color:var(--ink);text-decoration:none}
-a.person:hover{border-color:var(--accent)}
-.mono{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:18px;background:var(--accent);color:var(--accent-ink)}
-.person .pn{font-weight:600;font-size:17px;margin:0}
-.person .pr{font-size:14px;color:var(--muted);margin:0}
-.person .pm{font-size:13px;font-weight:600;color:var(--accent);margin:auto 0 0}
-.prog{display:flex;flex-direction:column;gap:4px}
-.bar{height:6px;border-radius:999px;background:var(--line);overflow:hidden}
-.bar i{display:block;height:100%;min-width:4px;border-radius:999px;background:var(--accent)}
-.pp{margin:0;font-size:13px;color:var(--muted)}
-.pp b{color:var(--ink);font-variant-numeric:tabular-nums}
-.person.soon{border-style:dashed;background:transparent}
-.person.soon .mono{background:var(--line);color:var(--muted)}
-.person.soon .pm{color:var(--muted)}
-.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;counter-reset:st}
-.steps li{counter-increment:st;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
-.steps li::before{content:counter(st);width:28px;height:28px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center}
-.steps b{display:block}
-.steps span{font-size:14px;color:var(--muted)}
-.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
-.rule{border-top:3px solid var(--accent);background:var(--surface);border-radius:0 0 10px 10px;padding:12px 14px}
-.rule b{display:block;margin-bottom:4px}
-.rule span{font-size:14px;color:var(--muted)}
-.about{margin:0;max-width:38em}
-.view{display:flex;flex-direction:column;gap:24px}
-.poll{display:flex;flex-direction:column;gap:10px;margin-bottom:8px}
-.opt{font:inherit;text-align:left;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;box-shadow:var(--shadow);transition:border-color .15s ease}
-.opt:hover:not(:disabled){border-color:var(--accent)}
-.opt:disabled{cursor:default}
-.opt[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
-.opt .on{font-weight:600}
-.opt .or{display:block;font-size:13px;font-weight:400;color:var(--muted)}
-.opt .oc{font-size:13px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
-.opt[aria-pressed="true"] .oc{color:var(--accent)}
-.opt .bar{grid-column:1 / -1}
-.opt .bar i{min-width:0;transition:width .3s ease}
-.photo{position:relative;aspect-ratio:4 / 3;border-radius:12px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 28% 22%,color-mix(in srgb,var(--accent) 34%,var(--surface)),color-mix(in srgb,var(--accent) 9%,var(--surface)) 70%)}
-.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.photo .mono{width:72px;height:72px;font-size:26px}
-.photo.round{aspect-ratio:1;width:56px;flex:none;border-radius:50%}
-.photo.round .mono{width:100%;height:100%;font-size:18px;box-shadow:none}
-.whorow{display:flex;align-items:center;gap:12px}
-.whorow .who strong{font-size:18px}
-/* Modern layer: same palette and type, softer surfaces, depth and motion */
-:root{--shadow:0 1px 2px rgba(15,28,46,.05),0 8px 24px rgba(15,28,46,.06);--shadow-up:0 2px 4px rgba(15,28,46,.06),0 16px 36px rgba(15,28,46,.12)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);--shadow-up:0 2px 4px rgba(0,0,0,.35),0 16px 36px rgba(0,0,0,.4)}}
-:root[data-theme="dark"]{--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);--shadow-up:0 2px 4px rgba(0,0,0,.35),0 16px 36px rgba(0,0,0,.4)}
-.wrap{padding-top:0}
-header{position:sticky;top:0;z-index:5;padding:14px 0;background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
-.brand h1{font-size:24px}
-.hero{padding:20px 0 4px}
-.hero h2{font-size:clamp(36px,9vw,52px)}
-.hero h2::after{content:"";display:block;width:56px;height:4px;border-radius:999px;background:var(--accent);margin-top:14px}
-form,.person,#answer,.rule{border-radius:16px;box-shadow:var(--shadow)}
-.rule{border-top:0;position:relative;overflow:hidden;padding-top:16px}
-.rule::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}
-.person{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-a.person:hover{transform:translateY(-3px);box-shadow:var(--shadow-up)}
-.person.soon{box-shadow:none}
-.mono{box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
-.person.soon .mono{box-shadow:none}
-button.primary{border-radius:999px;padding:11px 22px;transition:transform .15s ease,filter .15s ease}
-button.primary:hover:not(:disabled){filter:brightness(1.08)}
-button.primary:active:not(:disabled){transform:scale(.97)}
-textarea{border-radius:12px;transition:border-color .15s ease,box-shadow .15s ease}
-textarea:focus{border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent);outline:0}
-.examples button{transition:border-color .15s ease,background-color .15s ease}
-.examples button:hover{background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
-.back{text-decoration:none;font-weight:600}
-.back:hover{text-decoration:underline}
-.view{transition:opacity .18s ease}
-.view.out{opacity:0}
-.view.in,#answer-section.in{animation:fadein .32s ease both}
-@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion: reduce){.view,.person,button.primary,textarea{transition:none}.view.in,#answer-section.in{animation:none}a.person:hover{transform:none}}
-.cands{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:10px}
-.cands li{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow)}
-.cands b{display:block}
-.cands span{font-size:13px;color:var(--muted)}
-.facts{display:flex;flex-direction:column;gap:12px}
-.fact{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow)}
-.fact b{display:block;margin-bottom:4px}
-.fact span{font-size:15px;color:var(--muted)}
-.soonbox{background:var(--warn-bg);color:var(--warn-ink);border-radius:12px;padding:12px 14px;font-size:14px;margin:0}
-footer{border-top:1px solid var(--line);padding-top:16px;font-size:13px;color:var(--muted)}
-footer p{margin:0}
-[hidden]{display:none!important}
-@media (prefers-reduced-motion: reduce){ol.sources li{transition:none}}
-</style>
+  redirectLegacyHash();
+  window.addEventListener("hashchange", redirectLegacyHash);
+})();
+</script>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="brand"><h1><a href="#ana">Nə deyib?</a></h1><span class="pill">Pilot</span></div>
-  </header>
-
-  <main class="view" id="view-home">
-    <div class="hero">
-      <h2>Tanınmış simaların dedikləri bir kitabxanada</h2>
+<a class="skip" href="#mezmun">Məzmuna keç</a>
+<header class="site-header">
+  <div class="bar wrap">
+    <div class="brand">
+      <h1><a href="/">Nə deyib?</a></h1>
+      <span class="pill">Pilot</span>
     </div>
-
-    <section>
-      <h2>Sima seç</h2>
-      <ul class="people">
-        <li><a class="person" href="#ferhad-pervizi">
-          <div class="photo" data-photo="ferhad-pervizi"><span class="mono" aria-hidden="true">FP</span></div>
-          <p class="pn">Fərhad Pərvizi</p>
-          <p class="pr">İqtisadçı və biznes məsləhətçisi. "Potensialist" adı ilə tanınır.</p>
-          <div class="prog">
-            <div class="bar" role="img" id="bar" aria-label="Kitabxanaya əlavə olunan mənbələrin payı"><i id="bar-fill"></i></div>
-            <p class="pp">Əlavə olunub: <b id="pct"></b> <span>(<span id="count-home"></span> mənbə, ümumi say təxminidir)</span></p>
-            <p class="pp">Kitabxana doldurulur, bu faiz zamanla artacaq.</p>
-          </div>
-          <p class="pm">Nə deyib? →</p>
-        </a></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Hansı problemi həll edir</h2>
-      <p class="about">Dəyərli fikirlər saatlarla davam edən videoların, müsahibələrin və podkastların içində itir. Bir mövzuda kiminsə nə dediyini tapmaq üçün hamısını izləmək lazım gəlir. Nə deyib? bu çıxışları sual verilə bilən kitabxanaya çevirir.</p>
-    </section>
-
-    <section>
-      <h2>Necə işləyir</h2>
-      <ol class="steps">
-        <li><div><b>Sima seç</b><span>Kimin fikri sənə lazımdırsa, onun səhifəsini aç.</span></div></li>
-        <li><div><b>Sualını yaz</b><span>Adi danışıq dilində, axtarış sözləri düşünmədən.</span></div></li>
-        <li><div><b>Cavabı al</b><span>Bir neçə saniyəyə, saatlarla video izləmədən.</span></div></li>
-      </ol>
-    </section>
-
-    <section>
-      <h2>Qaydalarımız</h2>
-      <div class="rules">
-        <div class="rule"><b>Yalnız real mənbə</b><span>Cavab mənbədə yoxdursa, sistem "məlumat yoxdur" deyir. Uydurmur.</span></div>
-        <div class="rule"><b>Heç kimin adından danışmır</b><span>Bu, simanı təqlid edən bot deyil. Dediklərini tapan kitabxanadır.</span></div>
-        <div class="rule"><b>Orijinala keçid</b><span>Hər cavabın altında onun götürüldüyü mənbənin linki olur.</span></div>
+    <button type="button" class="theme" data-theme-toggle aria-pressed="false" aria-label="Qaranlıq mövzuya keç">
+      <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.4 2.4a8.8 8.8 0 1 0 7.2 12.8A7.2 7.2 0 0 1 14.4 2.4z"/></svg>
+      <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M4.8 4.8l1.6 1.6M17.6 17.6l1.6 1.6M19.2 4.8l-1.6 1.6M6.4 17.6l-1.6 1.6"/></svg>
+    </button>
+  </div>
+</header>
+<main id="mezmun" class="wrap page">
+  <section class="hero">
+    <h2>Tanınmış simaların dedikləri bir kitabxanada</h2>
+    <form class="ask" role="search">
+      <label class="sr-only" for="sual">Sualını yaz</label>
+      <div class="ask-bar">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.25" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.2 15.2 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="sual" type="text" inputmode="search" placeholder="Sualını yaz" readonly aria-disabled="true" autocomplete="off" aria-describedby="sual-hint">
+        <span class="chip">Tezliklə</span>
       </div>
-    </section>
-
-    <section>
-      <h2>Növbəti simalar üçün namizədlər</h2>
-      <ul class="cands">
-        <li><b>Nizami Orucov</b><span>Psixoloq</span></li>
-        <li><b>Toğrul Səməd</b><span>Sahibkar</span></li>
-      </ul>
-      <p class="pp">Səsvermə tezliklə açılacaq.</p>
-    </section>
-  </main>
-
-  <main class="view" id="view-person" hidden>
-  <a class="back" href="#ana">← Bütün simalar</a>
-  <div class="whorow"><div class="photo round" data-photo="ferhad-pervizi"><span class="mono" aria-hidden="true">FP</span></div><p class="who"><strong>Fərhad Pərvizi</strong><br>İqtisadçı və biznes məsləhətçisi</p></div>
-
-  <p class="soonbox">Sual-cavab bölməsi hazırlanır. Tezliklə burada sualını yazıb cavabı mənbəsi ilə ala biləcəksən.</p>
+      <p class="hint" id="sual-hint">Sual-cavab bölməsi hazırlanır.</p>
+    </form>
+  </section>
 
   <section>
-    <h2>Qısaca</h2>
-    <div class="facts">
-      <div class="fact"><b>Kimdir</b><span>İqtisadiyyat, maliyyə və biznesin idarə edilməsi sahəsində 28 ildən artıq təcrübəsi olan məsləhətçi. "Potensialist" adı ilə tanınır.</span></div>
-      <div class="fact"><b>Nə ilə məşğuldur</b><span>Fərdlər üçün "İlk Milyonum" maliyyə savadlığı proqramını aparır, sahibkarlara isə fərdi konsultasiya verir.</span></div>
-      <div class="fact"><b>Kitabı</b><span>"İqtisadi Özünümüdafiə Dərsləri 2.0".</span></div>
+    <h2>Sima seç</h2>
+    <ul class="people">
+      <li>
+        <a class="person" href="/ferhad-pervizi/">
+          <div class="photo" data-photo="ferhad-pervizi"><span class="mono" aria-hidden="true">FP</span></div>
+          <div class="person-copy">
+            <p class="pn">Fərhad Pərvizi</p>
+            <p class="pr">İqtisadçı və biznes məsləhətçisi. "Potensialist" adı ilə tanınır.</p>
+            <div class="prog" data-stats="ferhad-pervizi" data-stats-compact>
+              <div class="meter" data-meter role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="Kitabxananın ümumi irəliləyişi" aria-valuetext="yüklənir"><i data-meter-fill></i></div>
+              <p class="pp" data-stats-line>Ümumi irəliləyiş yüklənir.</p>
+              <p class="pp">Kitabxana doldurulur, bu faiz zamanla artacaq.</p>
+            </div>
+            <p class="pm">Nə deyib? →</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Hansı problemi həll edir</h2>
+    <p class="about">Dəyərli fikirlər saatlarla davam edən videoların, müsahibələrin və podkastların içində itir. Bir mövzuda kiminsə nə dediyini tapmaq üçün hamısını izləmək lazım gəlir. Nə deyib? bu çıxışları sual verilə bilən kitabxanaya çevirir.</p>
+  </section>
+
+  <section>
+    <h2>Necə işləyir</h2>
+    <ol class="steps">
+      <li><div><b>Sima seç</b><span>Kimin fikri sənə lazımdırsa, onun səhifəsini aç.</span></div></li>
+      <li><div><b>Sualını yaz</b><span>Adi danışıq dilində, axtarış sözləri düşünmədən.</span></div></li>
+      <li><div><b>Cavabı al</b><span>Bir neçə saniyəyə, saatlarla video izləmədən.</span></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Qaydalarımız</h2>
+    <div class="rules">
+      <div class="rule"><b>Yalnız real mənbə</b><span>Cavab mənbədə yoxdursa, sistem "məlumat yoxdur" deyir. Uydurmur.</span></div>
+      <div class="rule"><b>Heç kimin adından danışmır</b><span>Bu, simanı təqlid edən bot deyil. Dediklərini tapan kitabxanadır.</span></div>
+      <div class="rule"><b>Orijinala keçid</b><span>Hər cavabın altında onun götürüldüyü mənbənin linki olur.</span></div>
     </div>
   </section>
 
   <section>
-    <h2>Mənbələr</h2>
-    <p class="about">Bu məlumat onun öz saytından götürülüb: <a href="https://potensialist.com" target="_blank" rel="noopener">potensialist.com</a>. Çıxışlarına <a href="https://www.youtube.com/@fparvizi" target="_blank" rel="noopener">YouTube kanalından</a> baxmaq olar.</p>
+    <h2>Növbəti simalar üçün namizədlər</h2>
+    <ul class="cands">
+      <li><b>Nizami Orucov</b><span>Psixoloq</span></li>
+      <li><b>Toğrul Səməd</b><span>Sahibkar</span></li>
+    </ul>
+    <p class="pp">Səsvermə tezliklə açılacaq.</p>
   </section>
-  </main>
-
-  <footer><p>Nə deyib? müstəqil layihədir. Burada adı çəkilən şəxslərlə rəsmi əməkdaşlıq yoxdur, məlumatlar onların açıq mənbələrinə əsaslanır. Səhifəsinin dəyişdirilməsini və ya silinməsini istəyən sima bizə yaza bilər.</p></footer>
-</div>
-
-<script>
-const ADDED_SOURCES = 7;
-const TOTAL_SOURCES_ESTIMATE = 400;
-const PHOTOS = {"ferhad-pervizi": ""};
-const $ = id => document.getElementById(id);
-document.querySelectorAll("[data-photo]").forEach(el => {
-  const src = PHOTOS[el.dataset.photo];
-  if(src){ const img = new Image(); img.alt = ""; img.src = src; el.appendChild(img); }
-});
-$("count-home").textContent = ADDED_SOURCES;
-(function(){
-  const pct = Math.min(100, ADDED_SOURCES / TOTAL_SOURCES_ESTIMATE * 100);
-  $("pct").textContent = pct < 1 ? "1%-dən az" : "təxminən " + Math.round(pct) + "%";
-  $("bar-fill").style.width = pct + "%";
-})();
-let firstRoute = true, routeTimer = null;
-const calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-function route(){
-  const person = location.hash === "#ferhad-pervizi";
-  const show = person ? $("view-person") : $("view-home");
-  const hide = person ? $("view-home") : $("view-person");
-  clearTimeout(routeTimer);
-  if(firstRoute || calm || hide.hidden){
-    firstRoute = false;
-    hide.hidden = true; hide.classList.remove("out"); show.hidden = false;
-    window.scrollTo(0, 0);
-    return;
-  }
-  hide.classList.add("out");
-  routeTimer = setTimeout(() => {
-    hide.hidden = true; hide.classList.remove("out");
-    show.hidden = false; show.classList.add("in");
-    window.scrollTo(0, 0);
-    routeTimer = setTimeout(() => show.classList.remove("in"), 360);
-  }, 180);
-}
-window.addEventListener("hashchange", route);
-route();
-</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Nə deyib? müstəqil layihədir. Burada adı çəkilən şəxslərlə rəsmi əməkdaşlıq yoxdur, məlumatlar onların açıq mənbələrinə əsaslanır. Səhifəsinin dəyişdirilməsini və ya silinməsini istəyən sima bizə yaza bilər.</p>
+    <p data-contact hidden>Əlaqə: <a data-contact-mail></a></p>
+    <p class="footer-links"><a href="/mexfilik/">Məxfilik</a></p>
+  </div>
+</footer>
+<script src="/site.config.js"></script>
+<script src="/assets/site.js"></script>
 </body>
 </html>

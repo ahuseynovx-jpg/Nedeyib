@@ -1,0 +1,74 @@
+{
+  "updated": "2026-11-18",
+  "unique_works": {
+    "total": 1105,
+    "processed": 0,
+    "duplicates_merged": 0
+  },
+  "platforms": [
+    {
+      "key": "youtube",
+      "label": "YouTube (öz kanalı)",
+      "total": 985,
+      "processed": 0,
+      "total_known": true,
+      "note": "174 video, 4 canlı yayım, 807 shorts"
+    },
+    {
+      "key": "youtube-tv",
+      "label": "Digər YouTube kanalları və TV",
+      "total": 69,
+      "processed": 0,
+      "total_known": true,
+      "note": ""
+    },
+    {
+      "key": "podcasts",
+      "label": "Podkastlar",
+      "total": 3,
+      "processed": 0,
+      "total_known": true,
+      "note": ""
+    },
+    {
+      "key": "blogs",
+      "label": "Bloqlar və məqalələr",
+      "total": 38,
+      "processed": 0,
+      "total_known": true,
+      "note": ""
+    },
+    {
+      "key": "news",
+      "label": "Xəbərlər və müsahibələr",
+      "total": 10,
+      "processed": 0,
+      "total_known": true,
+      "note": ""
+    },
+    {
+      "key": "instagram",
+      "label": "Instagram",
+      "total": 0,
+      "processed": 0,
+      "total_known": false,
+      "note": ""
+    },
+    {
+      "key": "tiktok",
+      "label": "TikTok",
+      "total": 0,
+      "processed": 0,
+      "total_known": false,
+      "note": ""
+    },
+    {
+      "key": "facebook",
+      "label": "Facebook",
+      "total": 0,
+      "processed": 0,
+      "total_known": false,
+      "note": ""
+    }
+  ]
+}
