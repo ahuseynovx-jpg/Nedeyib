@@ -252,6 +252,46 @@ a:hover { text-decoration-thickness: 2px; }
   background: var(--accent);
   color: var(--accent-ink);
 }
+button.chip { font: inherit; font-size: 13px; font-weight: 600; border: 0; cursor: pointer; }
+button.chip:hover { filter: brightness(1.08); }
+.examples { display: flex; flex-wrap: wrap; gap: 8px; }
+.examples button {
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.examples button:hover { border-color: var(--accent); }
+.hits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.hit {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hit-top { display: flex; align-items: center; gap: 8px; }
+.badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 16%, var(--surface));
+  color: var(--accent);
+}
+.hit-time { font-size: 13px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+.hit-title { margin: 0; font-weight: 600; }
+.excerpt { margin: 0; color: var(--muted); }
+.excerpt mark { background: var(--mark); color: var(--ink); border-radius: 3px; padding: 0 2px; }
+.hit-link { font-weight: 600; align-self: flex-start; }
 .hint, .note, .empty, .pp { margin: 0; color: var(--muted); font-size: 14px; }
 .pp b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
 

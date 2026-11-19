@@ -49,26 +49,10 @@
     });
   }
 
-  document.querySelectorAll("form.ask").forEach(function (form) {
-    form.addEventListener("submit", function (event) { event.preventDefault(); });
-  });
-
   function esc(value) {
     return String(value).replace(/[&<>"']/g, function (ch) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
     });
-  }
-
-  function hostOf(url) {
-    try { return new URL(url).host; } catch (err) { return url; }
-  }
-
-  function validSource(item) {
-    if (!item || typeof item.title !== "string" || typeof item.url !== "string") return false;
-    var title = item.title.trim();
-    var url = item.url.trim();
-    if (!title || !/^https?:\/\//i.test(url)) return false;
-    return true;
   }
 
   function safePhoto(src) {
@@ -78,14 +62,6 @@
     if (/^https:\/\//i.test(src)) return src;
     return "";
   }
-
-  function sourcesFor(people, id) {
-    var person = people[id] || {};
-    var all = Array.isArray(person.sources) ? person.sources : [];
-    return all.filter(validSource);
-  }
-
-  var listEl = document.querySelector("[data-source-list]");
 
   fetch("/data/sources.json", { credentials: "same-origin", cache: "no-store" })
     .then(function (res) {
@@ -104,31 +80,8 @@
         img.src = src;
         el.appendChild(img);
       });
-
-      if (!listEl) return;
-      var id = listEl.getAttribute("data-person");
-      var sources = sourcesFor(people, id);
-      if (!sources.length) {
-        listEl.innerHTML = '<p class="empty">Kitabxanaya hələ mənbə əlavə olunmayıb.</p>';
-        return;
-      }
-      var items = sources.map(function (item, index) {
-        var url = item.url.trim();
-        var note = item.note && String(item.note).trim()
-          ? '<p class="sx">' + esc(String(item.note).trim()) + "</p>"
-          : "";
-        return (
-          "<li><span class=\"num\">" + (index + 1) + "</span><div>" +
-          '<a class="st" href="' + esc(url) + '" rel="noopener noreferrer">' + esc(item.title.trim()) + "</a>" +
-          note +
-          '<p class="sl">' + esc(hostOf(url)) + "</p></div></li>"
-        );
-      }).join("");
-      listEl.innerHTML = '<ol class="sources">' + items + "</ol>";
     })
-    .catch(function () {
-      if (listEl) listEl.innerHTML = '<p class="empty">Mənbə siyahısı yüklənmədi.</p>';
-    });
+    .catch(function () {});
 
   var MONTHS = ["yanvar", "fevral", "mart", "aprel", "may", "iyun", "iyul", "avqust", "sentyabr", "oktyabr", "noyabr", "dekabr"];
 

@@ -12,13 +12,14 @@ Sual-cavab hələ qurulmayıb. Sual xanası qəsdən bağlıdır.
 - `404.html` — tapılmayan ünvan
 - `assets/site.css`, `assets/site.js` — ortaq görünüş və skript
 - `site.config.js` — əlaqə ünvanı
-- `data/sources.json` — səhifədə göstərilən mənbə keçidləri. Say onların sayıdır
+- `data/sources.json` — mənbə siyahısı. Səhifədə ayrıca siyahı kimi göstərilmir; axtarış nəticəsinin altındakı keçid mənbədir
+- `data/index/ferhad-pervizi.json` — sual axtarışının mətni. Yalnız sual yazılanda yüklənir
 - `data/stats/<sima>.json` — kitabxananın irəliləyişi. Faiz və platforma sayları buradan gəlir
 - `sitemap.xml`, `robots.txt`, `favicon.svg`
 
 ## Mənbə əlavə etmək
 
-`data/sources.json` içində simanın `sources` massivinə obyekt artır. Rəqəmi əllə yazma: səhifə massivin uzunluğunu göstərir. Yalnız real, açıq ünvan yaz. Siyahı boşdursa sayt 0 mənbə göstərir.
+`data/sources.json` mənbənin adını və ünvanını saxlayır. Şəxs səhifəsində bu siyahı açıq göstərilmir. Oxucu mənbəni axtarış nəticəsinin altındakı «Videoda bax» və ya «Oxu» keçidindən açır.
 
 ```json
 {
