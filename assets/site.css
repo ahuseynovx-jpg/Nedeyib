@@ -412,6 +412,37 @@ button.chip:hover { filter: brightness(1.08); }
 .cands { display: flex; flex-direction: column; gap: 10px; }
 .cands li { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; padding: 14px 16px; flex-wrap: wrap; }
 .cands b { margin: 0; }
+.cands li.cand { flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 10px; }
+.cand-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.cand-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.cand-count { font-variant-numeric: tabular-nums; font-weight: 600; }
+.cand-count b { display: inline; margin: 0; }
+.vote-btn {
+  flex: none;
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 8px 14px;
+  min-height: 40px;
+  cursor: pointer;
+}
+.vote-btn:hover:not(:disabled) { filter: brightness(1.08); }
+.vote-btn:disabled { cursor: default; }
+.vote-btn.done {
+  background: transparent;
+  color: var(--accent);
+}
+.vote-fallback {
+  margin: 0;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
 .facts { display: flex; flex-direction: column; gap: 12px; }
 .fact { padding: 16px; }
 .fact span { font-size: 16px; }

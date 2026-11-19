@@ -48,6 +48,12 @@ Transkripsiya irəlilədikcə `data/stats/<sima>.json` faylını yenilə: platfo
 5. `sitemap.xml`-ə `https://nedeyib.com/sima-adı/` ünvanını yaz.
 6. Köhnə heş lazımdırsa, `index.html` başındakı yönləndirməyə həmin açarı əlavə et.
 
+## Səsvermə
+
+Namizədlər `data/candidates.json` faylındadır (`id`, `name`, `role`). `id` 3–64 simvol olmalıdır və yalnız hərf, rəqəm, `_`, `-`, `.` ola bilər. Səhifə hər namizəd üçün `https://abacus.jasoncameron.dev` sayğacını oxuyur və səs verəndə bir artırır. Ad boşluğu `nedeyib`-dir. Açarı `assets/vote.js` içindəki adapterdə dəyişmək olar.
+
+Hər cihaz hər namizədə bir dəfə səs verir. Bu qeyd yalnız brauzerin `localStorage` yaddaşındadır. Sərbəst mətnlə namizəd təklifi yoxdur, çünki onu saxlayan serverimiz yoxdur.
+
 ## Əlaqə
 
 `site.config.js` içində `CONTACT_EMAIL`. Dəyər `CONTACT_EMAIL_TODO` olduqca əlaqə bloku səhifədə görünmür və bu yazı heç yerdə göstərilmir. Real ünvan (məsələn `ad@domain.az`) yazılanda blok özü açılır. Eyni sabit ana səhifədə, sima səhifəsində və məxfilik səhifəsində istifadə olunur.
