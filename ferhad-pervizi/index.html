@@ -51,14 +51,20 @@
 
   <section id="sual">
     <h2>Sualını yaz</h2>
-    <form class="ask" data-ask>
-      <label class="sr-only" for="sual-input">Sualını yaz</label>
-      <textarea id="sual-input" name="question" maxlength="500" rows="3" placeholder="Sualını yaz" required></textarea>
-      <div class="ask-row">
-        <button type="submit" class="vote-btn">Soruş</button>
-        <p class="pp" data-ask-left></p>
+    <div class="ask-layout">
+      <form class="ask" data-ask>
+        <label class="sr-only" for="sual-input">Sualını yaz</label>
+        <textarea id="sual-input" name="question" maxlength="500" rows="3" placeholder="Sualını yaz" required></textarea>
+        <div class="ask-row">
+          <button type="submit" class="vote-btn">Soruş</button>
+          <p class="pp ask-limit">Hər istifadəçiyə gündə 3 pulsuz sual.</p>
+          <p class="pp" data-ask-left hidden></p>
+        </div>
+      </form>
+      <div class="suggest" data-suggest>
+        <button type="button" class="suggest-q" data-suggest-q></button>
       </div>
-    </form>
+    </div>
     <p class="note">Cavablar yalnız Fərhad Pərvizinin öz sözlərinə əsaslanır; hər cavabda mənbə göstərilir.</p>
     <div data-ask-out aria-live="polite"></div>
   </section>
