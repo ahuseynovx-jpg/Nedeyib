@@ -309,6 +309,7 @@ a:hover { text-decoration-thickness: 2px; }
 .meter { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; }
 .meter-lg { height: 12px; }
 .meter i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--accent); transition: width .7s ease; }
+.meter i[data-width]:not([data-width="0"]) { min-width: 6px; }
 .meter.is-unknown { background: transparent; border: 1px dashed var(--line); }
 [data-stats-body] { display: flex; flex-direction: column; gap: 16px; }
 .stats-overall, .platform {

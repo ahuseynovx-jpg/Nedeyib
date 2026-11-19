@@ -1,74 +1,80 @@
 {
   "updated": "2026-11-18",
   "unique_works": {
-    "total": 1105,
-    "processed": 0,
-    "duplicates_merged": 0
+    "total": 1095,
+    "processed": 41,
+    "duplicates_merged": 12
   },
   "platforms": [
     {
-      "key": "youtube",
-      "label": "YouTube (öz kanalı)",
+      "key": "youtube_own",
+      "label": "YouTube — öz kanalı (video, canlı yayım, short)",
       "total": 985,
-      "processed": 0,
-      "total_known": true,
-      "note": "174 video, 4 canlı yayım, 807 shorts"
+      "processed": 4,
+      "total_known": true
     },
     {
-      "key": "youtube-tv",
+      "key": "youtube_other",
       "label": "Digər YouTube kanalları və TV",
       "total": 69,
       "processed": 0,
-      "total_known": true,
-      "note": ""
-    },
-    {
-      "key": "podcasts",
-      "label": "Podkastlar",
-      "total": 3,
-      "processed": 0,
-      "total_known": true,
-      "note": ""
+      "total_known": true
     },
     {
       "key": "blogs",
-      "label": "Bloqlar və məqalələr",
+      "label": "Bloq yazıları (adi.parvizi.org, pul.parvizi.org)",
       "total": 38,
-      "processed": 0,
-      "total_known": true,
-      "note": ""
+      "processed": 38,
+      "total_known": true
     },
     {
-      "key": "news",
-      "label": "Xəbərlər və müsahibələr",
+      "key": "media",
+      "label": "Müsahibələr, xəbərlər və tədbirlər",
       "total": 10,
       "processed": 0,
-      "total_known": true,
-      "note": ""
+      "total_known": true
     },
     {
-      "key": "instagram",
-      "label": "Instagram",
-      "total": 0,
+      "key": "own_site",
+      "label": "Öz saytı",
+      "total": 2,
       "processed": 0,
-      "total_known": false,
-      "note": ""
+      "total_known": true
+    },
+    {
+      "key": "podcast",
+      "label": "Podkastlar",
+      "total": 3,
+      "processed": 0,
+      "total_known": true
     },
     {
       "key": "tiktok",
       "label": "TikTok",
-      "total": 0,
+      "total": null,
       "processed": 0,
-      "total_known": false,
-      "note": ""
+      "total_known": false
+    },
+    {
+      "key": "instagram",
+      "label": "Instagram",
+      "total": null,
+      "processed": 0,
+      "total_known": false
     },
     {
       "key": "facebook",
       "label": "Facebook",
-      "total": 0,
+      "total": null,
       "processed": 0,
-      "total_known": false,
-      "note": ""
+      "total_known": false
+    },
+    {
+      "key": "x",
+      "label": "X",
+      "total": null,
+      "processed": 0,
+      "total_known": false
     }
   ]
 }

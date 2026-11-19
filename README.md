@@ -34,11 +34,9 @@ Sual-cavab hələ qurulmayıb. Sual xanası qəsdən bağlıdır.
 
 Rəqəmlər HTML-də yazılmır. Səhifə `data/stats/<sima>.json` faylını oxuyur. `processed` transkripsiya edilərək indekslənmiş saydır. Platformada `total_known` false-dursa faiz əvəzinə «hesablanır» görünür.
 
-Ümumi faiz platformaların cəmi deyil. Eyni çıxış YouTube-da, podkastda və qısa videoda təkrarlana bilər, ona görə səhifə faizi yalnız `unique_works` sahəsindən götürür.
+Ümumi faiz platformaların cəmi deyil. Eyni çıxış bir neçə yerdə təkrarlana bilər, ona görə səhifə faizi yalnız `unique_works` sahəsindən götürür. `duplicates_merged` neçə təkrarın birləşdirildiyini göstərir. Səhifə bu rəqəmləri özü cəmləmir.
 
-`unique_works.total` hazırda **1105**-dir və bu, müvəqqəti yer tutandır: məlum platforma saylarının cəmidir (985 + 69 + 38 + 3 + 10). Pipeline eyni çıxışı bir dəfə saymaq üçün `unique_works.total` və `duplicates_merged` dəyərlərini yenidən hesablayıb bu fayla yazmalıdır. Səhifə onu özü cəmləməz.
-
-Transkripsiya irəlilədikcə platformanın `processed` sahəsini və `unique_works.processed` sahəsini artır, `updated` tarixini `YYYY-MM-DD` kimi yenilə. Ümumi sayı bilinəndə `total_known` true olsun və `total` yazılsın.
+Transkripsiya irəlilədikcə `data/stats/<sima>.json` faylını yenilə: platformanın `processed` sahəsini, `unique_works` sahəsini və `updated` tarixini (`YYYY-MM-DD`). Ümumi sayı bilinmirsə `total` null və `total_known` false olsun.
 
 ## Sima əlavə etmək
 

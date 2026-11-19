@@ -149,8 +149,8 @@
   function percentLabel(processed, total) {
     if (!total) return "hesablanır";
     var pct = processed / total * 100;
-    if (processed <= 0) return "0%";
-    if (pct < 1) return "1%-dən az";
+    if (processed <= 0 || pct <= 0) return "0%";
+    if (pct < 0.05) return "1%-dən az";
     if (pct < 10) return String(Math.round(pct * 10) / 10).replace(".", ",") + "%";
     return Math.round(pct) + "%";
   }
@@ -251,6 +251,7 @@
       '<p class="stats-kicker">Ümumi irəliləyiş</p>' +
       '<p class="stats-pct">' + esc(label) + "</p>" +
       bar + pair +
+      '<p class="stats-meta">Kitabxana doldurulur, bu faiz zamanla artacaq.</p>' +
       '<p class="dedupe">Eyni çıxış bir neçə platformada ola bilər, ümumi faiz təkrarlar çıxılmaqla hesablanır.</p>' +
       '<p class="stats-meta">Birləşdirilən təkrarlar: <b>' + dupes + "</b></p>" +
       (date ? '<p class="stats-meta">Son yenilənmə: <b>' + esc(date) + "</b></p>" : "") +
